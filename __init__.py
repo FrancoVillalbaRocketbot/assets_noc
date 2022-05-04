@@ -150,7 +150,7 @@ if module == "getData":
 
 if module == "getAllData":
 
-    # name_ = GetParams("name_")
+    name_ = GetParams("name_")
     var_ = GetParams("var_")
 
     try:
@@ -161,6 +161,7 @@ if module == "getAllData":
         if res.status_code == 200:
             res = res.json()
             if res['success']:
+                #print('RES',[a['name'] for a in res['data']])
                 tmp = [{'name':a['name'],'value':a['value']} for a in res['data']]
                 for b in tmp:
                     SetVar(b['name'],b['value'])
@@ -172,5 +173,3 @@ if module == "getAllData":
     except Exception as e:
         PrintException()
         raise (e)
-
-
